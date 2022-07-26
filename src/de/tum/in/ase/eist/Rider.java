@@ -84,6 +84,6 @@ public class Rider implements Observer<Rider> {
 
     @Override
     public void update(Rider changedState) {
-
+         getPEV().getUpdate();
     }
 }

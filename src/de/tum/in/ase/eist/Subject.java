@@ -4,21 +4,22 @@ import java.util.*;
 
 public abstract class Subject<T> {
     // TODO realize observer pattern
-    private final Set<Observer<T>> observers = new HashSet<>();
+    private Set<Observer<T>> observers = new HashSet<>();
 
-    public void subscribeObserver(Observer<T> observer) {
+    public void subscribe(Observer observer) {
         Objects.requireNonNull(observer);
         observers.add(observer);
     }
 
-    public void unsubsribeObserver(Observer<T> observer) {
+    public void unsubscribe(Observer observer) {
         Objects.requireNonNull(observer);
         observers.remove(observer);
     }
-    protected void notifyObservers(final T changedState) {
+    public void notifyObservers() {
         for (Observer<T> observer : observers){
-            observer.getUpdate(changedState);
+            observer.getUpdate(getUpdate());
         }
 
     }
+    abstract T getUpdate();
 }

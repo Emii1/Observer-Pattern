@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // TODO realize the observer pattern
-public abstract class PEV {
+public abstract class PEV extends Subject<PEV>{
 
     private int chargeLevel;
     private final String licensePlate;
@@ -81,5 +81,10 @@ public abstract class PEV {
 
     public void ride() {
         System.out.println("Riding " + toString());
+    }
+
+    @Override
+    PEV getUpdate() {
+        return null;
     }
 }

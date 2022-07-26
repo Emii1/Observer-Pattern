@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 // TODO realize the observer pattern
-public class Rider {
+public class Rider implements Observer<Rider> {
 
     private final String name;
     private int age;
@@ -80,5 +80,10 @@ public class Rider {
     private void notifyAvailabilityChanged(PEV pev, boolean isAvailable) {
         String status = isAvailable ? "available" : "not available";
         System.out.println(name + " got notified that " + pev.getLicensePlate() + " is now " + status);
+    }
+
+    @Override
+    public void update(Rider changedState) {
+
     }
 }
